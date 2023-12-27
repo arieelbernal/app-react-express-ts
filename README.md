@@ -15,3 +15,6 @@ Aplicación desarrollada en react typescript conectada a una API Rest realizada 
 2. tsc --watch --> en directorio /server para compilar typescript a JS ES6
 3. npx nodemon ./dist/app.js --> sigue al archivo app.js generado dentro del directorio /dist
 4. npm start --> en directorio /cliente/mi-app para levantar la aplicacion react
+
+#### API TEST
+- Dentro del directorio server se encuentra una coleccion de postman con las pruebas realizadas a la API.
