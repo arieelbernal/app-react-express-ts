@@ -1,7 +1,7 @@
 
-const Home = () => {
+const Home = (): JSX.Element => {
     return (
-        <div className="container">
+        <>
             <header>
                 <h1>Prueba Técnica Global Think Technology</h1>
             </header>
@@ -67,7 +67,7 @@ const Home = () => {
             <footer>
                 <p>&copy; 2023 Rodriguez Bernal Ariel</p>
             </footer>
-        </div>
+        </>
     );
 };
 

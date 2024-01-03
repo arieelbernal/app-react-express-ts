@@ -100,7 +100,13 @@ function getListaEntidades() {
 }
 exports.getListaEntidades = getListaEntidades;
 function getEntidadPorId(id) {
-    return listaEntidades.find(element => element.id === id); // Como defino la lista en el mismo service, busco dentro del mismo array una entidad con el id recibido por parametro.
+    var _a;
+    const entidadNoEncontrada = { id: -1,
+        nombre: '',
+        anioFundacion: 0,
+        proposito: '',
+        activa: false, };
+    return (_a = listaEntidades.find(element => element.id === id)) !== null && _a !== void 0 ? _a : entidadNoEncontrada; // Como defino la lista en el mismo service, busco dentro del mismo array una entidad con el id recibido por parametro.
 }
 exports.getEntidadPorId = getEntidadPorId;
 function editarEntidad(entidad) {

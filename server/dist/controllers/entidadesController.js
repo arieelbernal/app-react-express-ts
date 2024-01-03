@@ -8,7 +8,8 @@ const entidadesService_1 = require("../services/entidadesService");
 const getEntidades = (req, res) => {
     try {
         console.log('getEntidades');
-        res.send(JSON.stringify((0, entidadesService_1.getListaEntidades)()));
+        const listaEntidades = (0, entidadesService_1.getListaEntidades)();
+        res.send(JSON.stringify(listaEntidades));
     }
     catch (e) {
         (0, handlerError_1.handlerHttpError)(res, 'GET_ENTIDADES', e); // Cuando se dispara el catch devuelve un tipo de error 500 con la descripcion enviada en la llamada.
@@ -20,7 +21,7 @@ const getEntidad = (req, res) => {
     try {
         const entidad = (0, entidadesService_1.getEntidadPorId)(Number(req.params.id)); // Se llama a una funcion del service que retorna la entidad.
         // Si encuentra la entidad la retorna y devuelve un 200, en caso de no encontrarla devuelve un 404 junto a un error.
-        if (entidad !== undefined) {
+        if (entidad !== undefined && entidad.id !== -1) {
             res.send(JSON.stringify(entidad));
             res.status(200);
         }
@@ -40,7 +41,7 @@ const getEntidadesFiltradas = (req, res) => {
         const campo2 = req.query.filtro2 ? req.query.filtro2 : '';
         const campo3 = req.query.filtro3 ? req.query.filtro3 : '';
         const campo4 = req.query.filtro4 ? req.query.filtro4 : '';
-        const campo5 = req.query.filtro4 ? req.query.filtro5 : '';
+        const campo5 = req.query.filtro5 ? req.query.filtro5 : '';
         const entidades = (0, entidadesService_1.filtrarEntidadesPorCampos)(entidadesService_1.listaEntidades, [campo1, campo2, campo3, campo4, campo5]);
         res.send(JSON.stringify(entidades));
     }

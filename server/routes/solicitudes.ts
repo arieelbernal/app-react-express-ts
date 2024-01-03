@@ -1,7 +1,7 @@
-import { Request, Response, Router} from 'express';
+import { Router} from 'express';
 import { getSolicitudes } from '../controllers/solicitudesController';
 
-const router = Router();
+const router: Router = Router();
 
 router.get('/', getSolicitudes);
 

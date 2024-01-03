@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Entidad } from '../interfaces/Entidad';
+import type { Entidad } from '../interfaces/Entidad';
 import '../assets/css/style.css';
 import CardEntidad from './CardEntidad';
 
-const ListaEntidadesFiltradasv2: React.FC = () => {
+const ListaEntidadesFiltradasv2 = (): JSX.Element => {
     const [listaEntidades, setListaEntidades] = useState<Entidad[]>([]);
     const [entidadesFiltradas, setEntidadesFiltradas] = useState<Entidad[]>([]);
     const [filtro, setFiltro] = useState<string>('');
@@ -36,7 +36,7 @@ const ListaEntidadesFiltradasv2: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <>
             <h2 className='titulo'>Entidades filtradas por nombre</h2>
             <input
                 type="text"
@@ -48,7 +48,7 @@ const ListaEntidadesFiltradasv2: React.FC = () => {
             />
             {entidadesFiltradas.map((e) => (<CardEntidad key={e.id} entidad={e} />) // Se utiliza el metodo .map de arrays para devolver un array nuevo cuyos elementos son del tipo CardEntidad y con la prop {entidad} que es el cada elemento.
             )}
-        </div>
+        </>
     );
 };
 

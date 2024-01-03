@@ -1,10 +1,11 @@
-import React, { useState, useEffect, ReactElement } from 'react';
-import { Entidad } from '../interfaces/Entidad';
+import React, { useState, useEffect } from 'react';
+import type { ReactElement } from 'react';
+import type { Entidad } from '../interfaces/Entidad';
 import ListaEntidades from '../components/ListaEntidades';
 import ListaEntidadesFiltradas from '../components/ListaEntidadesFiltradas';
 import { FaSpinner } from 'react-icons/fa';
 
-const Entidades: React.FC = () => {
+const Entidades = (): JSX.Element => {
     const [listaEntidades, setListaEntidades] = useState<Entidad[]>([]);
     const [componenteRenderizado, setComponenteRenderizado] = useState<React.ReactElement>(<div>
         <h2>Cargando...</h2>
@@ -44,8 +45,8 @@ const Entidades: React.FC = () => {
 
     return <div>
         <div className='opciones'>
-            <a href="#" onClick={() => cambiarComponente(<ListaEntidades entidades={listaEntidades} />)}>Lista de Entidades</a>
-            <a href="#" onClick={() => cambiarComponente(<ListaEntidadesFiltradas />)}>Entidades Filtradas por campo</a>
+            <button onClick={() => cambiarComponente(<ListaEntidades entidades={listaEntidades} />)}>Lista de Entidades</button>
+            <button onClick={() => cambiarComponente(<ListaEntidadesFiltradas />)}>Entidades Filtradas por campo</button>
         </div>
         {componenteRenderizado}
   </div>;

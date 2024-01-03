@@ -1,20 +1,18 @@
-import React from 'react';
-import { Entidad } from '../interfaces/Entidad';
-interface CardEntidadProps {
-  entidad: Entidad;
-}
+import type { CardEntidadProps } from '../interfaces/CardEntidadProps';
 
-const CardEntidad: React.FC<CardEntidadProps> = ({ entidad }) => {
+const CardEntidad = ({ entidad }: CardEntidadProps): JSX.Element => {
   // Extraer los datos específicos
   const { id, nombre, anioFundacion, proposito, activa } = entidad;
 
   return (
-    <div className="card">
-      <h2 key={nombre}>{id}. {nombre}</h2>
-      {proposito !== null && proposito &&<p>Proposito: {proposito}</p>}
-      {anioFundacion !== null && anioFundacion &&<p>Año: {anioFundacion}</p>}
-      {activa !== null && <p>Estado activo: {activa ? <p>ACTIVA</p> : <p>INACTIVA</p>}</p>}
-    </div>
+    <>
+      <div className="card">
+        <h2 key={nombre}>{id}. {nombre}</h2>
+        {proposito !== null && proposito &&<p>Proposito: {proposito}</p>}
+        {anioFundacion !== null && anioFundacion &&<p>Año: {anioFundacion}</p>}
+        {activa !== null && <p>Estado activo: {activa ? 'ACTIVA' : 'INACTIVA'}</p>}
+      </div>
+    </>
   ); // Componente CardEntidad para mostrar las propiedades de la entidad.
 };
 

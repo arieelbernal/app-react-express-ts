@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Entidades from './pages/Entidades';
@@ -6,7 +5,7 @@ import { Home } from './pages/Home';
 import Entidadesv2 from './pages/Entidadesv2';
 
 
-const App: React.FC = () => {
+const App = (): JSX.Element => {
   return (
     <Router>
       {

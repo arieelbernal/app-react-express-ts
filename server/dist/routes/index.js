@@ -23,16 +23,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
+const express_1 = require("express");
 const fs = require("fs");
 const PATH_ROUTER = `${__dirname}`;
-const router = express.Router();
+const router = (0, express_1.Router)();
 const nombreSinExtension = (fileName) => {
-    return fileName.split('.').shift(); // Retorna el nombre del archivo sin la extensión .js del para posterior poder usarlo como path
+    var _a;
+    let nombreArchivo = (_a = fileName.split('.').shift()) !== null && _a !== void 0 ? _a : '';
+    return nombreArchivo; // Retorna el nombre del archivo sin la extensión .js del para posterior poder usarlo como path
 };
 fs.readdirSync(PATH_ROUTER).filter((fileName) => {
     const nombreRuta = nombreSinExtension(fileName);
-    if (nombreRuta !== 'index' && !fileName.includes('map')) {
+    if (nombreRuta !== 'index' && !fileName.includes('map') && nombreRuta !== '') {
         Promise.resolve(`${`./${nombreRuta}`}`).then(s => __importStar(require(s))).then((modulo) => {
             router.use(`/${nombreRuta}`, modulo.router); // Importacion dinámica de modulos con su router y seteo de ruta
         });

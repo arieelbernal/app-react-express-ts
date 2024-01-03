@@ -11,7 +11,7 @@ const mRouter = express.Router();
 
 dotenv.config();
 
-const port = process.env.PORT || '5001'; // Implementacion de dotenv para establecer variables globales
+const port: string = process.env.PORT || '5001'; // Implementacion de dotenv para establecer variables globales
 // const swaggerOptions = require("./swaggerOptions.js");
 // const specs = swaggerJsdoc(swaggerOptions);
 

@@ -1,12 +1,11 @@
-// EntityListContainer.tsx
-import React, { useState, useEffect} from 'react';
-import { Entidad } from '../interfaces/Entidad';
+import { useState, useEffect} from 'react';
+import type { Entidad } from '../interfaces/Entidad';
 import '../assets/css/style.css';
-import { CampoFiltro } from '../interfaces/CampoFiltro';
+import type { CampoFiltro } from '../interfaces/CampoFiltro';
 import CardEntidad from './CardEntidad';
 
   // Componente funcional que recibe la lista de entidades como props
-  const ListaEntidadesFiltradas: React.FC = () => {
+  const ListaEntidadesFiltradas = (): JSX.Element => {
     const [entidadesFiltradas, setEntidadesFiltradas] = useState<Entidad[]>([]);
     const [listaFiltros, setListaFiltros] = useState<CampoFiltro[]>([
       {label: 'Nombre', propiedad: 'nombre', selected: true}, {label: 'Descripcion', propiedad: 'proposito', selected: true}, {label: 'Año', propiedad: 'anioFundacion', selected: true}, {label: 'Estado activo', propiedad: 'activa', selected: true}
@@ -28,7 +27,7 @@ import CardEntidad from './CardEntidad';
     };
 
     const handleToggle = (campo: CampoFiltro) => {
-        const filtrosActualizados = listaFiltros.map((e) =>
+        const filtrosActualizados: CampoFiltro[] = listaFiltros.map((e) =>
         e.propiedad === campo.propiedad ? { ...e, selected: !e.selected } : e);
         filtro = '';
         filtrosActualizados.forEach((e,i) => {
@@ -46,15 +45,15 @@ import CardEntidad from './CardEntidad';
 
   useEffect(() => {
     fetchData(filtro);
-  }, []);
+  }, [filtro]);
 
     return (
       <div>
-      <h2 className='titulo'>Entidades con filtro de campos</h2>
-      <div>{listaFiltros.map((e)=>( <button key={e.propiedad} className={e.selected? 'activado filtro-boton' : 'desactivado filtro-boton'} onClick={() => handleToggle(e)}>{e.label}</button>))}</div>
-      {entidadesFiltradas.map((e) => (<CardEntidad key={e.id} entidad = {e}/>)
-      )}
-    </div>
+        <h2 className='titulo'>Entidades con filtro de campos</h2>
+        <div>{listaFiltros.map((e)=>( <button key={e.propiedad} className={e.selected? 'activado filtro-boton' : 'desactivado filtro-boton'} onClick={() => handleToggle(e)}>{e.label}</button>))}</div>
+        {entidadesFiltradas.map((e) => (<CardEntidad key={e.id} entidad = {e}/>)
+        )}
+      </div>
     );
   };
   

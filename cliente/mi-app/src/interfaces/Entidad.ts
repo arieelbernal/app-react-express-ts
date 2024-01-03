@@ -6,4 +6,4 @@ interface Entidad {
     activa: boolean,
 }
 
-export type{ Entidad };
+export type { Entidad };

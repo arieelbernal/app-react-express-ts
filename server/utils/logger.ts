@@ -10,7 +10,7 @@ const levels = {
   debug: 4,
 }
 
-const level = () => {
+const level = (): string => {
   const env = process.env.NODE_ENV || 'development'
   const isDevelopment = env === 'development'
   return isDevelopment ? 'debug' : 'warn'
@@ -43,7 +43,7 @@ const transports = [
   new winston.transports.File({ filename: 'logs/all.log' }), // Creación del archivo donde se guardaran las solicitudes.
 ]
 
-const Logger = winston.createLogger({
+const Logger: winston.Logger = winston.createLogger({
   level: level(),
   levels,
   format,

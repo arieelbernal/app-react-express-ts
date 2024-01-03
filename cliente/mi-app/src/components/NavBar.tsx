@@ -1,7 +1,6 @@
-import React from 'react';
 const logo = require('../assets/img/gtt-logo.png');
 
-const Navbar: React.FC = () => {
+const Navbar = (): JSX.Element => {
   return (
     <nav className = "navbar">
       <div className="logo">

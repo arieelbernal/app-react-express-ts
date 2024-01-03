@@ -103,11 +103,16 @@ function getListaEntidades(): Entidad[] {
     return listaEntidades; // Retorna lista de entidades.
 }
 
-function getEntidadPorId(id: Number): any {
-    return listaEntidades.find(element => element.id === id); // Como defino la lista en el mismo service, busco dentro del mismo array una entidad con el id recibido por parametro.
+function getEntidadPorId(id: Number): Entidad {
+    const entidadNoEncontrada: Entidad = {id: -1,
+        nombre: '',
+        anioFundacion: 0,
+        proposito: '',
+        activa: false,}
+    return listaEntidades.find(element => element.id === id) ?? entidadNoEncontrada; // Como defino la lista en el mismo service, busco dentro del mismo array una entidad con el id recibido por parametro.
 }
 
-function editarEntidad(entidad: Entidad){
+function editarEntidad(entidad: Entidad): number{
     const entidadIndice = listaEntidades.findIndex((elemento) => elemento.id === entidad.id); // Busca el indice de la entidad, si no lo encuentra devuelve -1
     console.log(entidadIndice);
     if(entidadIndice !== -1){

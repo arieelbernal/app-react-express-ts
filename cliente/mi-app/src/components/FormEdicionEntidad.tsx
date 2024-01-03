@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Entidad } from '../interfaces/Entidad';
+import { useState, useEffect } from 'react';
+import type { FormEvent } from 'react';
+import type { Entidad } from '../interfaces/Entidad';
 
-const FormEdicionEntidad: React.FC<{ id: Number }> = ({ id }) => {
+interface FormEdicionProps {
+  id: Number;
+}
+
+const FormEdicionEntidad = ({ id }: FormEdicionProps): JSX.Element => {
   const [formData, setFormData] = useState<Entidad>({id: 0,
     nombre: '',
     anioFundacion: 0,
     proposito: '',
     activa: false
   });
-  const[error, setError] = useState<Boolean>(false);
+  // const[error, setError] = useState<Boolean>(false);
 
   useEffect(() => {
     try {
@@ -18,11 +23,11 @@ const FormEdicionEntidad: React.FC<{ id: Number }> = ({ id }) => {
       setFormData(data);
     });
   } catch (e) {
-      setError(true);
+      // setError(true);
   }
-  }, []);
+  }, [id]);
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     try {
